@@ -10,9 +10,10 @@ import Foundation
 func printName() {
     print("Введите имя")
     let name = readLine() ?? "no name"
-    switch name {
-    case "Sasha", "Kakashka":
-        print("Привет, \(name)")
+    let sName = name.lowercased()
+    switch sName {
+    case "sasha", "kakashka":
+        print("Привет, \(sName)")
     default: break
     }
 }
