@@ -14,12 +14,12 @@ func printSum() {
             var sum = 0
             for count in 1...convertedNumber {
                 sum = sum + count
-            } 
-            print("Сумма чисел от 1 до \(convertedNumber) равна \(sum)")
-            } else {
-                print("Неправильный ввод")
             }
+            print("Сумма чисел от 1 до \(convertedNumber) равна \(sum)")
+        } else {
+            print("Неправильный ввод")
         }
     }
+}
 
 printSum()
