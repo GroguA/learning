@@ -7,5 +7,11 @@
 
 import Foundation
 
-print("Hello, World!")
+func printName() {
+    print("Введите имя")
+    let name = readLine() ?? "no name"
+    print("Привет, \(name)")
+}
+
+printName()
 
