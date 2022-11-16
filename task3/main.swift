@@ -10,12 +10,14 @@ import Foundation
 func printSum() {
     print("Введите число")
     if let number = readLine() {
-        if let convertNumber = Int(number) {
+        if let convertedNumber = Int(number) {
             var sum = 0
-            for count in 1...convertNumber {
+            for count in 1...convertedNumber {
                 sum = sum + count
-            }
-            print(sum)
+            } 
+            print("Сумма чисел от 1 до \(convertedNumber) равна \(sum)")
+            } else {
+                print("Неправильный ввод")
             }
         }
     }
