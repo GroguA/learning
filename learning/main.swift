@@ -11,9 +11,7 @@ func printName() {
     print("Введите имя")
     let name = readLine() ?? "no name"
     switch name {
-    case "Sasha":
-        print("Привет, \(name)")
-    case "Kakashka":
+    case "Sasha", "Kakashka":
         print("Привет, \(name)")
     default: break
     }
