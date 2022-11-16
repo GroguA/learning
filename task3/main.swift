@@ -11,8 +11,11 @@ func printSum() {
     print("Введите число")
     if let number = readLine() {
         if let convertNumber = Int(number) {
-            let sum = 0...convertNumber
-            print("\(sum.reduce(0, +))")
+            var sum = 0
+            for count in 1...convertNumber {
+                sum = sum + count
+            }
+            print(sum)
             }
         }
     }
