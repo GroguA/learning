@@ -7,5 +7,19 @@
 
 import Foundation
 
-print("Hello, World!")
+func printSum() {
+    print("Введите число")
+    if let number = readLine() {
+        if let convertedNumber = Int(number) {
+            var sum = 0
+            for count in 1...convertedNumber {
+                sum = sum + count
+            }
+            print("Сумма чисел от 1 до \(convertedNumber) равна \(sum)")
+        } else {
+            print("Неправильный ввод")
+        }
+    }
+}
 
+printSum()
