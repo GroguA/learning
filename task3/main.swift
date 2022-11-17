@@ -12,7 +12,7 @@ func printSum() {
     if let number = readLine() {
         if let convertedNumber = Int(number) {
             var sum = 0
-            for count in 1...convertedNumber {
+            for count in 1...convertedNumber where count % 3 == 0 || count % 5 == 0 {
                 sum = sum + count
             }
             print("Сумма чисел от 1 до \(convertedNumber) равна \(sum)")
