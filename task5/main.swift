@@ -15,6 +15,7 @@ func simpleNumbersPrint() {
         for divider in dividers {
             if number % divider == 0 {
                 isSimple = false
+                break
             }
         }
         print("\(isSimple) \(number)")
