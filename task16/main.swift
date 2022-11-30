@@ -14,7 +14,7 @@ var newArray = [Int]()
 func newListFromInts(integer: Int) -> Array<Int> {
     var number = integer
     while number % 10 != 0 {
-        var ostatok = number % 10
+        let ostatok = number % 10
         newArray.append(ostatok)
         number = number / 10
     }
