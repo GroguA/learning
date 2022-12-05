@@ -40,6 +40,8 @@ class Node {
 
 class LinkedIntList {
     var firstNode: Node?
+    private var internalCount = 0
+    
     func addToBack(value: Int) {
         if firstNode == nil {
             firstNode = Node(value: value)
@@ -50,7 +52,9 @@ class LinkedIntList {
             }
             currentNode?.nextNode = Node(value: value)
         }
+        internalCount += 1
     }
+    
     func getAll() -> Array<Int> {
         var array = [Int]()
         var currentNode = firstNode
@@ -62,34 +66,68 @@ class LinkedIntList {
         }
         return array
     }
+    
     func clear() {
         firstNode = nil
-        }
+        internalCount = 0
+    }
+    
     func addToStart(value: Int) {
-        var newFirstNode = Node(value: value)
+        let newFirstNode = Node(value: value)
         let temp = firstNode
         firstNode = newFirstNode
         newFirstNode.nextNode = temp
+        internalCount += 1
     }
+    
     func getByIndex(index: Int) -> Int? {
         var count = 0
         var currentNode = firstNode
         while count != index {
-           currentNode = currentNode?.nextNode
-           count += 1
+            currentNode = currentNode?.nextNode
+            count += 1
         }
         return currentNode?.value
     }
+    
+    func getCount() -> Int {
+        var count = 0
+        var currentNode = firstNode
+        while currentNode != nil {
+            currentNode = currentNode?.nextNode
+            count += 1
+        }
+        return count
+    }
+    
+    func getCountSmart() -> Int {
+        return internalCount
+    }
+    
+    func removeByIndex(index: Int) {
+        var count = 0
+        var currentNode = firstNode
+        while count < index - 1 {
+            currentNode = currentNode?.nextNode
+            count += 1
+        }
+        currentNode?.nextNode = currentNode?.nextNode?.nextNode
+    }
+    
 }
 
 let linkedIntList = LinkedIntList()
 
 linkedIntList.addToBack(value: 5)
 linkedIntList.addToBack(value: 6)
+linkedIntList.addToBack(value: 8)
+linkedIntList.addToBack(value: 9)
 
 //linkedIntList.clear()
 
-linkedIntList.addToStart(value: 7)
+//linkedIntList.addToStart(value: 1)
 
-print(linkedIntList.getByIndex(index: 3))
+linkedIntList.removeByIndex(index: 1)
+
+print(linkedIntList.getAll())
 
