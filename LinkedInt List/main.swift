@@ -29,20 +29,30 @@ import Foundation
 //функция getByIndex принимает в себя индекс, а возвращает value опциональный
 //нельзя использовать массив и квадратные скобки
 
-class Node {
-    var value: Int
+class Node<T> {
+    var value: T
     var nextNode: Node?
-    init(value: Int, nextNode: Node? = nil) {
+    init(value: T, nextNode: Node? = nil) {
         self.value = value
         self.nextNode = nextNode
     }
 }
 
-class LinkedIntList {
-    var firstNode: Node?
+class LinkedList<T> {
+    private var firstNode: Node<T>?
     private var internalCount = 0
     
-    func addToBack(value: Int) {
+    subscript(index: Int) -> T? {
+        var count = 0
+        var currentNode = firstNode
+        while count != index {
+            currentNode = currentNode?.nextNode
+            count += 1
+        }
+        return currentNode?.value
+    }
+    
+    func addToBack(value: T) {
         if firstNode == nil {
             firstNode = Node(value: value)
         } else {
@@ -55,8 +65,8 @@ class LinkedIntList {
         internalCount += 1
     }
     
-    func getAll() -> Array<Int> {
-        var array = [Int]()
+    func getAll() -> Array<T> {
+        var array = [T]()
         var currentNode = firstNode
         while currentNode != nil {
             if let convertedNode = currentNode {
@@ -72,7 +82,7 @@ class LinkedIntList {
         internalCount = 0
     }
     
-    func addToStart(value: Int) {
+    func addToStart(value: T) {
         let newFirstNode = Node(value: value)
         let temp = firstNode
         firstNode = newFirstNode
@@ -80,15 +90,17 @@ class LinkedIntList {
         internalCount += 1
     }
     
-    func getByIndex(index: Int) -> Int? {
-        var count = 0
-        var currentNode = firstNode
-        while count != index {
-            currentNode = currentNode?.nextNode
-            count += 1
-        }
-        return currentNode?.value
-    }
+//    func getByIndex(index: Int) -> T? {
+//        var count = 0
+//        var currentNode = firstNode
+//        subscript(index: Int) -> T? {
+//            while count != index {
+//                currentNode = currentNode?.nextNode
+//                count += 1
+//            }
+//            return currentNode?.value
+//        }
+//    }
     
     func getCount() -> Int {
         var count = 0
@@ -116,18 +128,32 @@ class LinkedIntList {
     
 }
 
-let linkedIntList = LinkedIntList()
+//let linkedIntList = LinkedIntList<Int>()
+//
+//linkedIntList.addToBack(value: 5)
+//linkedIntList.addToBack(value: 6)
+//linkedIntList.addToBack(value: 8)
+//linkedIntList.addToBack(value: 9)
+//
+////linkedIntList.clear()
+//
+////linkedIntList.addToStart(value: 1)
+//
+//linkedIntList.removeByIndex(index: 1)
+//
+//print(linkedIntList.getAll())
 
-linkedIntList.addToBack(value: 5)
-linkedIntList.addToBack(value: 6)
-linkedIntList.addToBack(value: 8)
-linkedIntList.addToBack(value: 9)
+let linkedIntList = LinkedList<String>()
+
+linkedIntList.addToBack(value: "sasha")
+linkedIntList.addToBack(value: "masha")
+linkedIntList.addToBack(value: "dasha")
+linkedIntList.addToBack(value: "glasha")
 
 //linkedIntList.clear()
 
 //linkedIntList.addToStart(value: 1)
 
-linkedIntList.removeByIndex(index: 1)
+//linkedIntList.removeByIndex(index: 1)
 
-print(linkedIntList.getAll())
-
+print(linkedIntList[2])
